@@ -44,7 +44,7 @@ else:
   - http://docs.python.org/3/library/os.path.html 사이트 확인
 
 ```python
-file = "C:/OSGeo_Edu/data/gangwon/admin_emd.shp"
+file = "C:/GISBootCampData/data/shp/admin_emd.shp"
 (head, tail) = path.split(file)
 # head : path
 # tail : filename with ext
@@ -96,11 +96,11 @@ print(encode)
 
 ```python
 # https://api.qgis.org/api/classQgsVectorLayer.html
-vlayer = QgsVectorLayer("C:/OSGeo_Edu/data/gangwon/admin_emd.shp", "admin_emd", "ogr")
+vlayer = QgsVectorLayer("C:/GISBootCampData/data/shp/admin_emd.shp", "admin_emd", "ogr")
 QgsProject.instance().addMapLayer(vlayer)
 
 # https://api.qgis.org/api/classQgisInterface.html
-vlayer = iface.addVectorLayer("C:/OSGeo_Edu/data/gangwon/admin_emd.shp", "admin_emd_2", "ogr")
+vlayer = iface.addVectorLayer("C:/GISBootCampData/data/shp/admin_emd.shp", "admin_emd_2", "ogr")
 ```
 
 ## 5.2 iface(QgisInterface) 인터페이스와 캔버스 색상 변경
@@ -147,12 +147,12 @@ QgsProject.instance().addMapLayer(wfs_layer)
 # 6. 래스터 레이어 불러오기
 ## 6.1 GeoTIFF 파일 불러오기
 ```python
-rlayer = QgsRasterLayer("C:/OSGeo_Edu/data/gangneung_raster/dem30.tif", "dem30")
+rlayer = QgsRasterLayer("C:/GISBootCampData/data/raster/dem30.tif", "dem30")
 QgsProject.instance().addMapLayer(rlayer)
 
 # or
 
-rlayer = iface.addRasterLayer("C:/OSGeo_Edu/data/gangneung_raster/dem30.tif", "dem30_2")
+rlayer = iface.addRasterLayer("C:/GISBootCampData/data/raster/dem30.tif", "dem30_2")
 ```
 
 ## 6.2 래스터 레이어의 특정 위치 값 조회하기
@@ -473,13 +473,13 @@ maximum = provider.maximumValue(2)  # 2 = field index
 print(minimum, maximum)
 
 # write shapefile
-output_file = 'C:/OSGeo_Edu/data/gangwon/memory_circle_points.shp'
+output_file = 'C:/GISBootCampData/data/shp/memory_circle_points.shp'
 error = QgsVectorFileWriter.writeAsVectorFormat(tlayer, output_file, "EUC-KR", crs, "ESRI Shapefile")
 if error[0] == QgsVectorFileWriter.NoError:
     print("shapefile exported!")
 
 # write GeoJSON
-output_file = 'C:/OSGeo_Edu/data/gangwon/circle_points.json'
+output_file = 'C:/GISBootCampData/data/shp/circle_points.json'
 error = QgsVectorFileWriter.writeAsVectorFormat(tlayer, output_file, "UTF-8", crs, "GeoJSON")
 if error[0] == QgsVectorFileWriter.NoError:
     print("geojson exported!")
@@ -488,7 +488,7 @@ if error[0] == QgsVectorFileWriter.NoError:
 # 10. 벡터 레이어 계산하기
 ## 10.1 계산 1
 ```python
-vlayer = QgsVectorLayer("C:/OSGeo_Edu/data/gangwon/polyceoffice.shp", "stores", "ogr")
+vlayer = QgsVectorLayer("C:/GISBootCampData/data/shp/school.shp", "school", "ogr")
 provider = vlayer.dataProvider()
 
 xfield = provider.fieldNameIndex("xc")
@@ -531,10 +531,10 @@ QgsProject.instance().addMapLayer(vlayer)
 
 ## 10.2 계산 2
 ```python
-vlayer = QgsVectorLayer("C:/OSGeo_Edu/data/gangwon/gangwon.shp", "stores", "ogr")
+vlayer = QgsVectorLayer("C:/GISBootCampData/data/shp/school.shp", "school", "ogr")
 provider = vlayer.dataProvider()
 
-rlayer = QgsRasterLayer("C:/OSGeo_Edu/data/gangneung_raster/dem30.tif", "dem30")
+rlayer = QgsRasterLayer("C:/GISBootCampData/data/raster/dem30.tif", "dem30")
 
 value_field = "elev" #dem 값이 입력될 필드 추가
 field_index = provider.fieldNameIndex(value_field)
@@ -570,8 +570,8 @@ QgsProject.instance().addMapLayer(vlayer)
 ## 11.1 QgsSpatialIndex
 ```python
 # admin_sgg 레이어의 fid가 18번인 피처와 교차하는 stores 레이어의 피처 수는?
-admin_layer = QgsVectorLayer("C:/OSGeo_Edu/data/gangwon/admin_sgg.shp", "admin_sgg", "ogr")
-store_layer = QgsVectorLayer("C:/OSGeo_Edu/data/gangwon/policeoffice.shp", "stores", "ogr")
+admin_layer = QgsVectorLayer("C:/GISBootCampData/data/shp/admin_sgg.shp", "admin_sgg", "ogr")
+store_layer = QgsVectorLayer("C:/GISBootCampData/data/shp/school.shp", "school", "ogr")
 spatial_index = QgsSpatialIndex(store_layer.getFeatures())
 
 request = QgsFeatureRequest().setFilterFid(18)  # fid
@@ -594,8 +594,8 @@ print(intersection_count)
 ## 11.2 QgsSpatialIndex + Prepared Geometry
 ```python
 # admin_sgg 레이어의 fid가 18번인 피처와 교차하는 stores 레이어의 피처 수는?
-admin_layer = QgsVectorLayer("C:/OSGeo_Edu/data/gangwon/admin_sgg.shp", "admin_sgg", "ogr")
-store_layer = QgsVectorLayer("C:/OSGeo_Edu/data/gangwon/policeoffice.shp", "stores", "ogr")
+admin_layer = QgsVectorLayer("C:/GISBootCampData/data/shp/admin_sgg.shp", "admin_sgg", "ogr")
+store_layer = QgsVectorLayer("C:GISBootCampData/data/shp/school.shp", "school", "ogr")
 spatial_index = QgsSpatialIndex(store_layer.getFeatures())
 
 request = QgsFeatureRequest().setFilterFid(18)  # fid
