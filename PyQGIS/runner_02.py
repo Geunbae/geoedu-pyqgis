@@ -38,7 +38,7 @@ def run_script(iface):
         return
     
     # execute process
-    outputlayer = process.execute(inputlayer, "C:/OSGeo_Edu/data/seoul/admin_emd_point.shp")
+    outputlayer = process.execute(inputlayer, "C:/GISBootCampData/data/shp/admin_emd_point.shp")
     
     # add layer
     if outputlayer:
