@@ -31,7 +31,7 @@ def run_script(iface):
     loader = Loader(iface)
     
     # replace your shapefile folder
-    loader.load_shapefiles('C:/OSGeo_Edu/data/seoul')
+    loader.load_shapefiles('C:/GISBootCampData/data/shp')
     
 class Loader:
     def __init__(self, iface):
