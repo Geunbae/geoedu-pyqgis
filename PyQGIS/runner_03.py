@@ -32,13 +32,13 @@ def run_script(iface):
     
     # get layer
     # TOC에 stores 레이어가 추가 되어 있어야 함
-    inputlayer = Utilities.getLayer("stores")
+    inputlayer = Utilities.getLayer("school")
     if inputlayer is None:
         QMessageBox.information(iface.mainWindow(), "Information", "cannot find specified layer")
         return
     
     # execute process
-    outputlayer = process.execute(inputlayer, 750, "C:/OSGeo_Edu/data/seoul/stores_buffer_750.shp")
+    outputlayer = process.execute(inputlayer, 750, "C:/GISBootCampData/data/shp/school_buffer_750.shp")
     
     # add layer
     if outputlayer:
