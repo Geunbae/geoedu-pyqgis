@@ -572,10 +572,10 @@ QgsProject.instance().addMapLayer(vlayer)
 ```python
 # admin_sgg 레이어의 fid가 18번인 피처와 교차하는 stores 레이어의 피처 수는?
 admin_layer = QgsVectorLayer("C:/GISBootCampData/data/shp/admin_sgg.shp", "admin_sgg", "ogr")
-store_layer = QgsVectorLayer("C:/GISBootCampData/data/shp/school.shp", "school", "ogr")
-spatial_index = QgsSpatialIndex(store_layer.getFeatures())
+school_layer = QgsVectorLayer("C:/GISBootCampData/data/shp/school.shp", "school", "ogr")
+spatial_index = QgsSpatialIndex(school_layer.getFeatures())
 
-request = QgsFeatureRequest().setFilterFid(18)  # fid
+request = QgsFeatureRequest().setFilterFid(294)  # fid
 feature = next(admin_layer.getFeatures(request))
 admin_geom = feature.geometry()
 
@@ -583,7 +583,7 @@ intersection_count = 0
 stores_fids = spatial_index.intersects(admin_geom.boundingBox())
 for fid in stores_fids:
     request = QgsFeatureRequest().setFilterFid(int(fid))
-    store_feature = next(store_layer.getFeatures(request))
+    store_feature = next(school_layer.getFeatures(request))
     store_geometry = store_feature.geometry()
     if admin_geom.intersects(store_geometry):
         intersection_count += 1
@@ -596,10 +596,10 @@ print(intersection_count)
 ```python
 # admin_sgg 레이어의 fid가 18번인 피처와 교차하는 stores 레이어의 피처 수는?
 admin_layer = QgsVectorLayer("C:/GISBootCampData/data/shp/admin_sgg.shp", "admin_sgg", "ogr")
-store_layer = QgsVectorLayer("C:GISBootCampData/data/shp/school.shp", "school", "ogr")
-spatial_index = QgsSpatialIndex(store_layer.getFeatures())
+school_layer = QgsVectorLayer("C:GISBootCampData/data/shp/school.shp", "school", "ogr")
+spatial_index = QgsSpatialIndex(school_layer.getFeatures())
 
-request = QgsFeatureRequest().setFilterFid(18)  # fid
+request = QgsFeatureRequest().setFilterFid(294)  # fid
 feature = next(admin_layer.getFeatures(request))
 admin_geom = feature.geometry()
 admin_prepared = QgsGeometry.createGeometryEngine(admin_geom.constGet())
@@ -609,7 +609,7 @@ intersection_count = 0
 stores_fids = spatial_index.intersects(admin_geom.boundingBox())
 for fid in stores_fids:
     request = QgsFeatureRequest().setFilterFid(int(fid))
-    store_feature = next(store_layer.getFeatures(request))
+    store_feature = next(school_layer.getFeatures(request))
     store_geometry = store_feature.geometry()
     if admin_prepared.intersects(store_geometry.constGet()):
         intersection_count += 1
