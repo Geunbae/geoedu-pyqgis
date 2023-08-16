@@ -157,7 +157,7 @@ rlayer = iface.addRasterLayer("C:/GISBootCampData/data/raster/dem30.tif", "dem30
 
 ## 6.2 래스터 레이어의 특정 위치 값 조회하기
 ```python
-point_location = QgsPointXY(198326.53051, 447706.97545)
+point_location = QgsPointXY(365640,463619)
 identified = rlayer.dataProvider().identify(point_location, QgsRaster.IdentifyFormatValue).results()
 value = float(identified[1])  # 1 based raster band index
 print(value)
