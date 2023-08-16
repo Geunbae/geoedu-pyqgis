@@ -570,7 +570,7 @@ QgsProject.instance().addMapLayer(vlayer)
 # 11. 공간 인덱스 다루기
 ## 11.1 QgsSpatialIndex
 ```python
-# admin_sgg 레이어의 fid가 18번인 피처와 교차하는 school 레이어의 피처 수는?
+# admin_sgg 레이어의 fid가 8번인 피처와 교차하는 school 레이어의 피처 수는?
 admin_layer = QgsVectorLayer("C:/GISBootCampData/data/shp/admin_sgg.shp", "admin_sgg", "ogr")
 school_layer = QgsVectorLayer("C:/GISBootCampData/data/shp/school.shp", "school", "ogr")
 spatial_index = QgsSpatialIndex(school_layer.getFeatures())
@@ -594,7 +594,7 @@ print(intersection_count)
 
 ## 11.2 QgsSpatialIndex + Prepared Geometry
 ```python
-# admin_sgg 레이어의 fid가 18번인 피처와 교차하는 school 레이어의 피처 수는?
+# admin_sgg 레이어의 fid가 8번인 피처와 교차하는 school 레이어의 피처 수는?
 admin_layer = QgsVectorLayer("C:/GISBootCampData/data/shp/admin_sgg.shp", "admin_sgg", "ogr")
 school_layer = QgsVectorLayer("C:GISBootCampData/data/shp/school.shp", "school", "ogr")
 spatial_index = QgsSpatialIndex(school_layer.getFeatures())
