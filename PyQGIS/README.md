@@ -570,7 +570,7 @@ QgsProject.instance().addMapLayer(vlayer)
 # 11. 공간 인덱스 다루기
 ## 11.1 QgsSpatialIndex
 ```python
-# admin_sgg 레이어의 fid가 18번인 피처와 교차하는 stores 레이어의 피처 수는?
+# admin_sgg 레이어의 fid가 18번인 피처와 교차하는 school 레이어의 피처 수는?
 admin_layer = QgsVectorLayer("C:/GISBootCampData/data/shp/admin_sgg.shp", "admin_sgg", "ogr")
 school_layer = QgsVectorLayer("C:/GISBootCampData/data/shp/school.shp", "school", "ogr")
 spatial_index = QgsSpatialIndex(school_layer.getFeatures())
@@ -580,21 +580,21 @@ feature = next(admin_layer.getFeatures(request))
 admin_geom = feature.geometry()
 
 intersection_count = 0
-stores_fids = spatial_index.intersects(admin_geom.boundingBox())
-for fid in stores_fids:
+schools_fids = spatial_index.intersects(admin_geom.boundingBox())
+for fid in schools_fids:
     request = QgsFeatureRequest().setFilterFid(int(fid))
-    store_feature = next(school_layer.getFeatures(request))
-    store_geometry = store_feature.geometry()
-    if admin_geom.intersects(store_geometry):
+    school_feature = next(school_layer.getFeatures(request))
+    school_geometry = school_feature.geometry()
+    if admin_geom.intersects(school_geometry):
         intersection_count += 1
-        print("Feature ID = %d: " % store_feature.id(), store_feature.geometry().centroid().asPoint())
+        print("Feature ID = %d: " % school_feature.id(), school_feature.geometry().centroid().asPoint())
 
 print(intersection_count)
 ```
 
 ## 11.2 QgsSpatialIndex + Prepared Geometry
 ```python
-# admin_sgg 레이어의 fid가 18번인 피처와 교차하는 stores 레이어의 피처 수는?
+# admin_sgg 레이어의 fid가 18번인 피처와 교차하는 school 레이어의 피처 수는?
 admin_layer = QgsVectorLayer("C:/GISBootCampData/data/shp/admin_sgg.shp", "admin_sgg", "ogr")
 school_layer = QgsVectorLayer("C:GISBootCampData/data/shp/school.shp", "school", "ogr")
 spatial_index = QgsSpatialIndex(school_layer.getFeatures())
@@ -606,14 +606,14 @@ admin_prepared = QgsGeometry.createGeometryEngine(admin_geom.constGet())
 admin_prepared.prepareGeometry()
 
 intersection_count = 0
-stores_fids = spatial_index.intersects(admin_geom.boundingBox())
-for fid in stores_fids:
+schools_fids = spatial_index.intersects(admin_geom.boundingBox())
+for fid in schools_fids:
     request = QgsFeatureRequest().setFilterFid(int(fid))
-    store_feature = next(school_layer.getFeatures(request))
-    store_geometry = store_feature.geometry()
-    if admin_prepared.intersects(store_geometry.constGet()):
+    school_feature = next(school_layer.getFeatures(request))
+    school_geometry = school_feature.geometry()
+    if admin_prepared.intersects(school_geometry.constGet()):
         intersection_count += 1
-        print("Feature ID = %d: " % store_feature.id(), store_geometry.centroid().asPoint())
+        print("Feature ID = %d: " % school_feature.id(), school_geometry.centroid().asPoint())
 
 print(intersection_count)
 ```
