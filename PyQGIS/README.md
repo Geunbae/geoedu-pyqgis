@@ -575,7 +575,7 @@ admin_layer = QgsVectorLayer("C:/GISBootCampData/data/shp/admin_sgg.shp", "admin
 school_layer = QgsVectorLayer("C:/GISBootCampData/data/shp/school.shp", "school", "ogr")
 spatial_index = QgsSpatialIndex(school_layer.getFeatures())
 
-request = QgsFeatureRequest().setFilterFid(294)  # fid
+request = QgsFeatureRequest().setFilterFid(8)  # fid
 feature = next(admin_layer.getFeatures(request))
 admin_geom = feature.geometry()
 
@@ -599,7 +599,7 @@ admin_layer = QgsVectorLayer("C:/GISBootCampData/data/shp/admin_sgg.shp", "admin
 school_layer = QgsVectorLayer("C:GISBootCampData/data/shp/school.shp", "school", "ogr")
 spatial_index = QgsSpatialIndex(school_layer.getFeatures())
 
-request = QgsFeatureRequest().setFilterFid(294)  # fid
+request = QgsFeatureRequest().setFilterFid(8)  # fid
 feature = next(admin_layer.getFeatures(request))
 admin_geom = feature.geometry()
 admin_prepared = QgsGeometry.createGeometryEngine(admin_geom.constGet())
