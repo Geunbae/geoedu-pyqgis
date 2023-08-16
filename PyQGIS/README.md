@@ -254,7 +254,7 @@ vlayer.removeSelection()
 
 # rectangle 영역에 있는 Feature들의 Extent를 모두 하나로 합치기
 unioned_geomery = QgsGeometry()
-extent = QgsRectangle(194052.547, 447030.808, 197991.199,448635.444)
+extent = QgsRectangle(289563,484909, 327792,456146)
 request = QgsFeatureRequest().setFilterRect(extent)
 
 features = vlayer.getFeatures(request)
