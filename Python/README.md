@@ -1,7 +1,7 @@
 # Learning Python
-
-# 1. 자료형
 * https://docs.python.org/ko/3/tutorial/introduction.html
+  
+# 1. 자료형
 
 ```python
 import os
