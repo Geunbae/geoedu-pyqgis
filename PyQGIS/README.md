@@ -328,7 +328,7 @@ polygeon_geometry.asPolygon()   # QgsPolygon
 
 # area(), length(), distance()
 
-geomLine.distance(point_geometry)
+line_geometry.distance(point_geometry)
 polygeon_geometry.area()
 ```
 
