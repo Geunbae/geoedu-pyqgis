@@ -362,7 +362,7 @@ tlayer.startEditing()
 provider.addAttributes( [QgsField("dx", QVariant.Double), QgsField("dy", QVariant.Double) ] )
 
 # create and add a feature
-centroid = QgsPointXY(198326.53051, 447706.97545)
+centroid = QgsPointXY(365640,463619)
 buffered_geom = QgsGeometry.fromPointXY(centroid).buffer(5000, 8)  # segments = 8
 
 feature = QgsFeature(provider.fields())
@@ -416,7 +416,7 @@ features = []
 import math
 sides = 32
 radius = 5000.0 # 반지름 5km
-centroid = QgsPointXY(198326.53051, 447706.97545)
+centroid = QgsPointXY(365640,463619)
 
 # 첫번째 Feature는 중심점 Feature 생성
 feature = QgsFeature(fields)
