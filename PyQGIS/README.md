@@ -227,7 +227,7 @@ feature = next(vlayer.getFeatures(request))
 vlayer.select(feature.id())
 
 print("Feature ID = %d: " % feature.id())
-print(feature.id(), feature[4], feature["EMD_NM"])
+print(feature.id(), feature[4], feature["emd_nm_k"])
 
 # ZoomTo Feature Extent
 iface.mapCanvas().setExtent(feature.geometry().boundingBox())
