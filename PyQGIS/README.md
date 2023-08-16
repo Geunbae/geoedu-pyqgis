@@ -554,13 +554,14 @@ for feature in features:
     # get the raster value of the cell under the vector point
     rasterSample = rlayer.dataProvider().identify(geom.asPoint(), QgsRaster.IdentifyFormatValue).results()
 
-    # the key is the raster band, and the value is the cell's raster value
-    elevation = float(rasterSample[1])  # band index
+    if rasterSample[1] is not None:
+        # the key is the raster band, and the value is the cell's raster value
+        elevation = float(rasterSample[1])  # band index
 
-    # changeAttributeValue(feature id, index of field to be changed, new attribute value)
-    vlayer.startEditing()
-    vlayer.changeAttributeValue(int(feature.id()), field_index, elevation)
-    vlayer.commitChanges()
+        # changeAttributeValue(feature id, index of field to be changed, new attribute value)
+        vlayer.startEditing()
+        vlayer.changeAttributeValue(int(feature.id()), field_index, elevation)
+        vlayer.commitChanges()
 
 # 결과 Map에 로딩
 QgsProject.instance().addMapLayer(vlayer)
