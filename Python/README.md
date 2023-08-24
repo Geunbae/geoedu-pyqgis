@@ -497,7 +497,7 @@ from os import path
 import os
 import sys
 
-filename = 'C:\OpenData\QGIS\장난감도서관.csv' # 텍스트파일
+filename = 'C:\GISBootCampData\data\csv\강원도 강릉시_양돈농가 현황_20221111.csv' # 텍스트파일
 
 os.path.exists(filename)
 
@@ -515,7 +515,7 @@ glob.glob(r'C:\GISBootCampData\data\shp\*.shp')
 r, w, a  지정하지 않으면 r
 
 ```python
-filename = 'C:\OpenData\QGIS\장난감도서관.csv'
+filename = 'C:\GISBootCampData\data\csv\강원도 강릉시_양돈농가 현황_20221111.csv'
 file = open(filename, 'r', encoding='utf-8')
 while True:
     line = file.readline()
