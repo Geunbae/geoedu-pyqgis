@@ -508,7 +508,7 @@ shapefile_line = os.path.join(target_folder, f'{shp_name}_line.shp')
 
 
 import glob
-glob.glob(r'C:\OpenData\QGIS\*..shp')
+glob.glob(r'C:\GISBootCampData\data\shp\*.shp')
 ```
 
 ## 5.2 파일 읽기
