@@ -547,7 +547,7 @@ with open(filename, 'r', encoding='utf-8') as file:
 ## 5.2 파일 쓰기
 
 ```python
-filename = 'C:\OpenData\QGIS\장난감도서관.txt'
+filename = 'C:/GISBootCampData/data/test.txt'
 with open(filename, 'w', encoding='utf-8') as file:
     file.write('텍스트파일 쓰기')
 ```
